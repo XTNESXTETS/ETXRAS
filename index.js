@@ -1,4 +1,3 @@
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
@@ -33,7 +32,7 @@ app.post('/FirebaseProxy/saveUserData', async (req, res) => {
 app.get('/FirebaseProxy/getUserData/:userId', async (req, res) => {
     try {
         const userId = req.params.userId;
-        const url = `${firebaseDbUrl}users/${userData.UserId}.json?auth=${firebaseDbSecret}`;
+        const url = `${firebaseDbUrl}users/${userId}.json?auth=${firebaseDbSecret}`;
         const response = await axios.get(url);
         res.send(response.data);
     } catch (err) {
@@ -43,5 +42,5 @@ app.get('/FirebaseProxy/getUserData/:userId', async (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(\`FirebaseProxy backend running on port \${port}\`);
+    console.log(`FirebaseProxy backend running on port ${port}`);
 });
