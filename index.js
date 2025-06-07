@@ -20,7 +20,7 @@ app.post('/FirebaseProxy/saveUserData', async (req, res) => {
             return res.status(400).send({ error: 'Missing UserId' });
         }
 
-        const url = \`\${firebaseDbUrl}users/\${userData.UserId}.json?auth=\${firebaseDbSecret}\`;
+        const url = `${firebaseDbUrl}users/${userData.UserId}.json?auth=${firebaseDbSecret}`;
         const response = await axios.put(url, userData);
         res.send({ success: true, data: response.data });
     } catch (err) {
@@ -33,7 +33,7 @@ app.post('/FirebaseProxy/saveUserData', async (req, res) => {
 app.get('/FirebaseProxy/getUserData/:userId', async (req, res) => {
     try {
         const userId = req.params.userId;
-        const url = \`\${firebaseDbUrl}users/\${userId}.json?auth=\${firebaseDbSecret}\`;
+        const url = `${firebaseDbUrl}users/${userData.UserId}.json?auth=${firebaseDbSecret}`;
         const response = await axios.get(url);
         res.send(response.data);
     } catch (err) {
